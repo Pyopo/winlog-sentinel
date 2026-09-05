@@ -43,11 +43,14 @@ def id_threat(log_file_as_list, suspected_threats):
             higher_threat[aktualne_id]["linijka nr: "].append(numer)
     return higher_threat
 
-#funkcja ktora wyswietla konkretna linijke z log_file_as_list, rozpoznaje 'eventID' i wypisuje jego istotne pola z suspected_threats
-#do zrobienia
-
-
-
+#trzeba zmienic zeby nie brala za argument jeden event, a nie wczytywala cale logi
+def important_data_extraction(line_number):
+    line = log_file_as_list[line_number]
+    event_id = line["EventID"]
+    extracted_data = {}
+    for key_word in suspected_threats[event_id]:
+        extracted_data[key_word]=line[key_word]
+    return extracted_data
 
 if __name__ == "__main__":
     suspected_threats = {4688: ['NewProcessName','CommandLine','ParentProcessName','SubjectUserName',
@@ -63,3 +66,4 @@ if __name__ == "__main__":
     print(id_threat(log_file_as_list, suspected_threats))
     #show_n_events(log_file_as_list, 3)
     print(log_file_as_list[3])
+    print(important_data_extraction(3))
