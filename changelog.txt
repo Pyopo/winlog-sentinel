@@ -1,0 +1,3 @@
+05.09.2026
+*przypisano istotne pola do eventow 4688 i 1
+*poprawiono spojnosc wyswietlanych lini log_file_as_list[n] z id_threat -> higher_threat{"linijka nr: "}
